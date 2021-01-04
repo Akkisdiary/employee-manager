@@ -36,6 +36,8 @@ After starting both the servers, React frontend and swagger are available on fol
 
 ### Swagger: http://localhost:8000/swagger
 
+---
+
 ## Codegrip Score
 
 ![Score](/assets/CodeGripScore.jpg)
