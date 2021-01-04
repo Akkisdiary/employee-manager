@@ -4,7 +4,7 @@ const MainHeader = (props) => {
     return (
         <PageHeader
             className="site-page-header"
-            title={props.isAuthenticated ? props.title : "Employee Manager"}
+            title="Employee Manager"
             extra={
                 props.isAuthenticated
                     ? [

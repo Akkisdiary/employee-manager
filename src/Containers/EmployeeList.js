@@ -1,4 +1,4 @@
-import { Table, Space } from "antd";
+import { Table, Space, Button } from "antd";
 import { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -54,6 +54,9 @@ class EmployeeList extends Component {
         return (
             <div>
                 <p>{this.state.errorMsg}</p>
+                <Button onClick={() => this.props.history.push("/addEmployee")}>
+                    Add Employee
+                </Button>
                 <Table dataSource={this.state.employees}>
                     <Column title="ID" dataIndex="id" key="id" />
                     <Column

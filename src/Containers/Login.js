@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Button, Spin } from "antd";
+import { Form, Input, Button, Spin, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import * as action from "../store/actions/auth";
 
@@ -20,74 +20,84 @@ class NormalLoginForm extends Component {
             this.props.history.push("/");
         }
     }
-
+    tailFormItemLayout = {
+        wrapperCol: {
+            xs: {
+                span: 24,
+                offset: 0,
+            },
+            sm: {
+                span: 16,
+                offset: 8,
+            },
+        },
+    };
     render() {
         let errorMsg = "";
         if (this.props.error) {
-            errorMsg = this.props.error.message;
+            // console.log("DATA:", this.props.error);
+            errorMsg = this.props.error;
         }
         return (
-            <Form
-                name="normal_login"
-                className="login-form"
-                initialValues={{
-                    remember: true,
-                }}
-                onFinish={this.onFinish}
-            >
-                <Form.Item>
-                    <h3>Login</h3>
-                </Form.Item>
-                <Form.Item
-                    name="email"
-                    rules={[
-                        {
-                            required: true,
-                            type: "email",
-                            message: "The input is not valid E-mail!",
-                        },
-                    ]}
+            <Col span={8} offset={6}>
+                <Form
+                    name="normal_login"
+                    className="login-form"
+                    initialValues={{
+                        remember: true,
+                    }}
+                    onFinish={this.onFinish}
                 >
-                    <Input
-                        prefix={
-                            <UserOutlined className="site-form-item-icon" />
-                        }
-                        placeholder="Email"
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Please input your Password!",
-                        },
-                    ]}
-                >
-                    <Input
-                        prefix={
-                            <LockOutlined className="site-form-item-icon" />
-                        }
-                        type="password"
-                        placeholder="Password"
-                    />
-                </Form.Item>
-                <Form.Item>
-                    {!this.props.loading ? (
+                    <Form.Item>
+                        <h3>Login</h3>
+                    </Form.Item>
+                    <Form.Item
+                        name="email"
+                        rules={[
+                            {
+                                required: true,
+                                type: "email",
+                                message: "The input is not valid E-mail!",
+                            },
+                        ]}
+                    >
+                        <Input
+                            prefix={
+                                <UserOutlined className="site-form-item-icon" />
+                            }
+                            placeholder="Email"
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your Password!",
+                            },
+                        ]}
+                    >
+                        <Input
+                            prefix={
+                                <LockOutlined className="site-form-item-icon" />
+                            }
+                            type="password"
+                            placeholder="Password"
+                        />
+                    </Form.Item>
+                    <p>{errorMsg}</p>
+                    <Form.Item>
                         <Button
                             type="primary"
                             htmlType="submit"
                             className="login-form-button"
                         >
                             Log in
-                        </Button>
-                    ) : (
-                        <Spin />
-                    )}
-                </Form.Item>
-                Or <a href="/signup">register now!</a>
-                <p>{errorMsg}</p>
-            </Form>
+                        </Button>{" "}
+                        Or <a href="/signup">Signup</a>
+                    </Form.Item>
+                </Form>
+            </Col>
         );
     }
 }

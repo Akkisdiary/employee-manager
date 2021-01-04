@@ -55,7 +55,13 @@ export const authLogin = (email, password) => {
                 dispatch(authSuccess(token));
             })
             .catch((err) => {
-                dispatch(authFail(err));
+                let msg = "";
+                if (err === "Error: Network Error") {
+                    msg = "Network Error: Check if backend is working";
+                } else {
+                    msg = err.response.data["non_field_errors"];
+                }
+                dispatch(authFail(msg));
             });
     };
 };
@@ -104,7 +110,13 @@ export const authSignup = (
                 dispatch(authSuccess(token));
             })
             .catch((err) => {
-                dispatch(authFail(err));
+                let msg = "";
+                if (err === "Error: Network Error") {
+                    msg = "Network Error: Check if backend is working";
+                } else {
+                    msg = err.response.data["non_field_errors"];
+                }
+                dispatch(authFail(msg));
             });
     };
 };

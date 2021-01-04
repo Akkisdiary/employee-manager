@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Layout } from "antd";
-import { withRouter } from "react-router-dom";
+import { Layout, Menu, Avatar } from "antd";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as action from "../store/actions/auth";
 import MainHeader from "../Components/MainHeader";
-const { Content } = Layout;
+import { UserOutlined } from "@ant-design/icons";
+
+const { Header, Content } = Layout;
 
 class MainLayout extends Component {
     addEmployee = () => {
@@ -14,10 +16,27 @@ class MainLayout extends Component {
     render() {
         return (
             <Layout className="layout">
+                <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+                    <div className="logo" />
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        defaultSelectedKeys={["1"]}
+                    >
+                        <Menu.Item key="1">
+                            <Link to="/">Home</Link>
+                        </Menu.Item>
+                        {this.props.isAuthenticated ? (
+                            <Menu.Item key="2" onClick={this.props.logout}>
+                                {" "}
+                                Logout
+                            </Menu.Item>
+                        ) : null}
+                    </Menu>
+                </Header>
                 <MainHeader
                     isAuthenticated={this.props.isAuthenticated}
                     title="Employee Manager"
-                    addEmployee={this.addEmployee}
                     logout={this.props.logout}
                 />
                 <Content style={{ padding: "0 50px" }}>
