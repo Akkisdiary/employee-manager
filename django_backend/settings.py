@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'corsheaders',
     'employee_manager',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

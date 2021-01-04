@@ -19,7 +19,6 @@ class EmployeeList extends Component {
                 "Content-type": "application/json",
                 Authorization: "Token " + this.props.token,
             };
-            console.log(axios.defaults.headers);
             axios
                 .get("http://127.0.0.1:8000/api/")
                 .then((res) => {
@@ -55,36 +54,22 @@ class EmployeeList extends Component {
     render() {
         return (
             <div>
-                <br />
-                <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                >
-                    <Link to="/addEmployee">Add Employee</Link>
-                </Button>
-                <br />
                 <p>{this.state.errorMsg}</p>
-                <br />
                 <Table dataSource={this.state.employees}>
                     <Column
                         title="First Name"
                         dataIndex="first_name"
-                        key="first_name"
+                        key="id"
                     />
-                    <Column
-                        title="Last Name"
-                        dataIndex="last_name"
-                        key="last_name"
-                    />
-                    <Column title="Email" dataIndex="email" key="email" />
-                    <Column title="DOB" dataIndex="dob" key="dob" />
-                    <Column title="city" dataIndex="city" key="city" />
-                    <Column title="company" dataIndex="company" key="company" />
-                    <Column title="mobile" dataIndex="mobile" key="mobile" />
+                    <Column title="Last Name" dataIndex="last_name" key="id" />
+                    <Column title="Email" dataIndex="email" key="id" />
+                    <Column title="DOB" dataIndex="dob" key="id" />
+                    <Column title="city" dataIndex="city" key="id" />
+                    <Column title="company" dataIndex="company" key="id" />
+                    <Column title="mobile" dataIndex="mobile" key="id" />
                     <Column
                         title="Action"
-                        key="action"
+                        key="id"
                         render={(text, record) => (
                             <Space size="middle">
                                 <Link key="id" to={`/employee/${record.id}`}>

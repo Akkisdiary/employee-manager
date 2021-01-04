@@ -13,6 +13,4 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         return serializer.save(manager=self.request.user)
 
     def get_queryset(self):
-        queryset = Employee.objects.all()
-        user = self.request.user
-        return queryset.filter(manager=user)
+        return Employee.objects.filter(manager=self.request.user)
