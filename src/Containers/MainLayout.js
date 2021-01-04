@@ -15,6 +15,7 @@ class MainLayout extends Component {
         return (
             <Layout className="layout">
                 <MainHeader
+                    isAuthenticated={this.props.isAuthenticated}
                     title="Employee Manager"
                     addEmployee={this.addEmployee}
                     logout={this.props.logout}
