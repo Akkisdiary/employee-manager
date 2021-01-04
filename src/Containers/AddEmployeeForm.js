@@ -22,7 +22,7 @@ class AddEmployeeForm extends Component {
         if (this.props.isAuthenticated) {
             axios.defaults.headers = {
                 "Content-type": "application/json",
-                authorization: this.props.token,
+                authorization: "Token " + this.props.token,
             };
             if (this.state.employeeId) {
                 axios
@@ -50,7 +50,7 @@ class AddEmployeeForm extends Component {
         if (this.state.employeeId) {
             axios.defaults.headers = {
                 "Content-type": "application/json",
-                authorization: this.props.token,
+                authorization: "Token " + this.props.token,
             };
             axios
                 .put(`http://127.0.0.1:8000/api/${this.state.employeeId}/`, {
@@ -71,7 +71,7 @@ class AddEmployeeForm extends Component {
         } else {
             axios.defaults.headers = {
                 "Content-type": "application/json",
-                authorization: this.props.token,
+                authorization: "Token " + this.props.token,
             };
             axios
                 .post("http://127.0.0.1:8000/api/", {

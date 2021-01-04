@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Input, Button, Spin } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { LockOutlined } from "@ant-design/icons";
 import * as action from "../store/actions/auth";
 
 class NormalLoginForm extends Component {
     onFinish = (values) => {
-        this.props.onAuth(values.username, values.password);
+        this.props.onAuth(values.email, values.password);
     };
 
     componentDidMount() {
@@ -22,6 +22,10 @@ class NormalLoginForm extends Component {
     }
 
     render() {
+        let errorMsg = "";
+        if (this.props.error) {
+            errorMsg = this.props.error.message;
+        }
         return (
             <Form
                 name="normal_login"
@@ -35,20 +39,16 @@ class NormalLoginForm extends Component {
                     <h3>Login</h3>
                 </Form.Item>
                 <Form.Item
-                    name="username"
+                    name="email"
                     rules={[
                         {
                             required: true,
-                            message: "Please input your Username!",
+                            type: "email",
+                            message: "The input is not valid E-mail!",
                         },
                     ]}
                 >
-                    <Input
-                        prefix={
-                            <UserOutlined className="site-form-item-icon" />
-                        }
-                        placeholder="Username"
-                    />
+                    <Input />
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -81,7 +81,7 @@ class NormalLoginForm extends Component {
                     )}
                 </Form.Item>
                 Or <a href="/signup">register now!</a>
-                <p>{this.props.error}</p>
+                <p>{errorMsg}</p>
             </Form>
         );
     }
@@ -97,8 +97,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAuth: (username, password) =>
-            dispatch(action.authLogin(username, password)),
+        onAuth: (email, password) =>
+            dispatch(action.authLogin(email, password)),
     };
 };
 

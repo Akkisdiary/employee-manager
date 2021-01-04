@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Button } from "antd";
+import { Form, Input, DatePicker, Button } from "antd";
 import * as action from "../store/actions/auth";
 
 class RegistrationForm extends Component {
@@ -28,14 +28,24 @@ class RegistrationForm extends Component {
     onFinish = (values) => {
         this.props.onAuth(
             values.username,
+            values.first_name,
+            values.last_name,
             values.email,
             values.password,
-            values.confirm
+            values.confirm,
+            values.address,
+            values.dob,
+            values.company,
+            values.mobile,
+            values.city
         );
-        this.props.history.push("/");
     };
 
     render() {
+        let errorMsg = "";
+        if (this.props.error) {
+            errorMsg = this.props.error.message;
+        }
         return (
             <Form
                 ref={this.formRef}
@@ -46,13 +56,38 @@ class RegistrationForm extends Component {
                 <Form.Item>
                     <h3>Signup</h3>
                 </Form.Item>
+                <p>{errorMsg}</p>
                 <Form.Item
                     name="username"
                     label="Username"
                     rules={[
                         {
                             required: true,
-                            message: "Please input your Username!",
+                            message: "Please input username!",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name="first_name"
+                    label="First Name"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your First Name!",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name="last_name"
+                    label="Last Name"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your Last Name!",
                         },
                     ]}
                 >
@@ -87,6 +122,7 @@ class RegistrationForm extends Component {
                 >
                     <Input.Password />
                 </Form.Item>
+
                 <Form.Item
                     name="confirm"
                     label="Confirm Password"
@@ -115,6 +151,58 @@ class RegistrationForm extends Component {
                 >
                     <Input.Password />
                 </Form.Item>
+                <Form.Item
+                    name="address"
+                    label="Address"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your Address!",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item name="dob" label="DOB" {...this.config}>
+                    <DatePicker />
+                </Form.Item>
+                <Form.Item
+                    name="company"
+                    label="Company"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your Company!",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name="mobile"
+                    label="Mobile"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your mobile!",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name="city"
+                    label="City"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please input your City!",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
                 <Form.Item {...this.tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
                         Register
@@ -139,8 +227,34 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAuth: (username, email, password1, password2) =>
-            dispatch(action.authSignup(username, email, password1, password2)),
+        onAuth: (
+            username,
+            first_name,
+            last_name,
+            email,
+            password,
+            confirm,
+            address,
+            dob,
+            company,
+            mobile,
+            city
+        ) =>
+            dispatch(
+                action.authSignup(
+                    username,
+                    first_name,
+                    last_name,
+                    email,
+                    password,
+                    confirm,
+                    address,
+                    dob,
+                    company,
+                    mobile,
+                    city
+                )
+            ),
     };
 };
 

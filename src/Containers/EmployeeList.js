@@ -10,22 +10,23 @@ const { Column } = Table;
 class EmployeeList extends Component {
     state = {
         employees: [],
-        error: "",
+        errorMsg: "",
     };
 
     componentDidMount() {
         if (this.props.isAuthenticated) {
             axios.defaults.headers = {
                 "Content-type": "application/json",
-                authorization: this.props.token,
+                Authorization: "Token " + this.props.token,
             };
+            console.log(axios.defaults.headers);
             axios
                 .get("http://127.0.0.1:8000/api/")
                 .then((res) => {
                     this.setState({ employees: res.data });
                 })
                 .catch((err) => {
-                    this.setState({ error: err.message });
+                    this.setState({ errorMsg: err.message });
                 });
         } else {
             this.props.history.push("/login");
@@ -63,11 +64,11 @@ class EmployeeList extends Component {
                     <Link to="/addEmployee">Add Employee</Link>
                 </Button>
                 <br />
-                <p>{this.state.error}</p>
+                <p>{this.state.errorMsg}</p>
                 <br />
                 <Table dataSource={this.state.employees}>
                     <Column
-                        title={"First Name"}
+                        title="First Name"
                         dataIndex="first_name"
                         key="first_name"
                     />
