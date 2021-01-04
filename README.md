@@ -9,7 +9,7 @@ pip install -r requirements.txt
 npm install
 ```
 
-### Step 2: Configure Backend
+### Step 2: Init Database
 
 ```.bash
 python manage.py makemigrations
