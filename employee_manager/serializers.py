@@ -6,13 +6,23 @@ from .models import Employee
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
+    manager = serializers.ReadOnlyField(source='manager.id')
+
     class Meta:
         model = Employee
         fields = ('id', 'email', 'first_name',
-                  'last_name', 'address', 'dob', 'company', 'mobile', 'city')
+                  'last_name', 'address', 'dob', 'company', 'mobile', 'city', 'manager')
 
 
 class ManagerRegisterSerializer(RegisterSerializer):
+    first_name = serializers.CharField(
+        required=True,
+        max_length=50,
+    )
+    last_name = serializers.CharField(
+        required=True,
+        max_length=50,
+    )
     address = serializers.CharField(
         required=True,
         max_length=150,

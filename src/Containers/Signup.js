@@ -34,7 +34,7 @@ class RegistrationForm extends Component {
             values.password,
             values.confirm,
             values.address,
-            values.dob,
+            values.dob.format("YYYY-MM-DD"),
             values.company,
             values.mobile,
             values.city

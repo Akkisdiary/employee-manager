@@ -34,8 +34,6 @@ class AddEmployeeForm extends Component {
                     })
                     .catch((err) => this.setState({ error: err }));
             }
-        } else {
-            this.props.history.push("/login");
         }
     }
 

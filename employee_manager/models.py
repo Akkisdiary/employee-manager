@@ -20,7 +20,8 @@ class Employee(models.Model):
     company = models.CharField(blank=True, max_length=100)
     mobile = models.CharField(max_length=10, blank=True)
     city = models.CharField(blank=True, max_length=50)
-    # manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
+    manager = models.ForeignKey(
+        Manager, default="manager", on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

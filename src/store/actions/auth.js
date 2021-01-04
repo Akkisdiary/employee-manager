@@ -75,20 +75,25 @@ export const authSignup = (
 ) => {
     return (dispatch) => {
         dispatch(authStart());
+        const data = {
+            username: username,
+            email: email,
+            password1: password,
+            password2: confirm,
+            first_name: first_name,
+            last_name: last_name,
+            address: address,
+            dob: dob,
+            company: company,
+            mobile: mobile,
+            city: city,
+        };
+        console.log(data);
+        axios.defaults.headers = {
+            "Content-type": "application/json",
+        };
         axios
-            .post("http://127.0.0.1:8000/rest-auth/registration/", {
-                username: username,
-                first_name: first_name,
-                last_name: last_name,
-                email: email,
-                password1: password,
-                password2: confirm,
-                address: address,
-                dob: dob,
-                company: company,
-                mobile: mobile,
-                city: city,
-            })
+            .post("http://127.0.0.1:8000/rest-auth/registration/", data)
             .then((res) => {
                 const token = res.data.key;
                 const expirationDate = new Date(

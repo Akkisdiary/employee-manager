@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Input, Button, Spin } from "antd";
-import { LockOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import * as action from "../store/actions/auth";
 
 class NormalLoginForm extends Component {
@@ -48,7 +48,12 @@ class NormalLoginForm extends Component {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input
+                        prefix={
+                            <UserOutlined className="site-form-item-icon" />
+                        }
+                        placeholder="Email"
+                    />
                 </Form.Item>
                 <Form.Item
                     name="password"
