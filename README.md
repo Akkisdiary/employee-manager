@@ -36,4 +36,4 @@ Note: Start Frontend and Backend servers in individual terminals and keep both t
 
 ## Database Schema
 
-![ScreenShot](/assets/databadeSchema.png)
+![Image](/assets/databadeSchema.png)
