@@ -1,8 +1,8 @@
 # MindBowser - The Manager and Employee Assignment
 
-Following are the steps to start amd test the project
+Following are the steps to start and test the project
 
-### Step 1: Install All the Requirements
+### Step 1: Install all the Requirements
 
 ```.bash
 pip install -r requirements.txt
@@ -32,8 +32,8 @@ Note: Start Frontend and Backend servers in individual terminals and keep both t
 
 ## Codegrip Score
 
-![CodeGripStore](/assets/CodeGripStore.jpg)
+![CodeGripStore](./assets/codeGripScore.jpg)
 
 ## Database Schema
 
-![DatabaseSchema](/assets/databadeSchema.png)
+![DatabaseSchema](./assets/databadeSchema.png)
