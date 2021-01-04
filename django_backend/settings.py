@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'employee_manager',
     'drf_yasg',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

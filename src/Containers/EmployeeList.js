@@ -55,6 +55,7 @@ class EmployeeList extends Component {
             <div>
                 <p>{this.state.errorMsg}</p>
                 <Table dataSource={this.state.employees}>
+                    <Column title="ID" dataIndex="id" key="id" />
                     <Column
                         title="First Name"
                         dataIndex="first_name"

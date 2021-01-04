@@ -75,4 +75,6 @@ yarn-error.log*
 
 .vscode/
 *.sqlite3
+*.sql
+*.dot
 .eslintcache
