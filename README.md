@@ -30,6 +30,12 @@ npm start
 
 Note: Start Frontend and Backend servers in individual terminals and keep both the servers running.
 
+After starting both the servers, React frontend and swagger are available on following end-points
+
+### Frontend: http://localhost:3000/
+
+### Swagger: http://localhost:8000/swagger
+
 ## Codegrip Score
 
 ![Score](/assets/CodeGripScore.jpg)
