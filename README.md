@@ -36,4 +36,8 @@ Note: Start Frontend and Backend servers in individual terminals and keep both t
 
 ## Database Schema
 
+<<<<<<< HEAD
 ![Schema](/assets/schema.jpg)
+=======
+![Schema](/assets/databadeSchema.png)
+>>>>>>> 7cedc390603d87fd4554938ef726cf34943fb343
