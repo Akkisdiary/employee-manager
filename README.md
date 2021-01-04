@@ -32,8 +32,8 @@ Note: Start Frontend and Backend servers in individual terminals and keep both t
 
 ## Codegrip Score
 
-![Alt text](./assets/codeGripScore.jpg)
+![codeGrip](assets/codeGripScore.jpg)
 
 ## Database Schema
 
-![Alt text](./assets/databadeSchema.png)
+![databaseSchema](assets/databadeSchema.png)
