@@ -40,14 +40,22 @@ class EmployeeList extends Component {
     deleteEmployee = (employeeId) => {
         axios.defaults.headers = {
             "Content-type": "application/json",
-            authorization: this.props.token,
+            Authorization: "Token " + this.props.token,
         };
         axios
             .delete(`http://127.0.0.1:8000/api/${employeeId}/`)
             .then((res) => {
-                console.log("SUCCESS:", res);
+                let temp = [];
+                this.state.employees.map((employee) => {
+                    if (employee.id !== employeeId) {
+                        temp.push(employee);
+                    }
+                });
+                this.setState({ employees: temp });
             })
-            .catch((err) => this.setState({ error: err.message }));
+            .catch((err) => {
+                this.setState({ errorMsg: err.message });
+            });
     };
 
     render() {
@@ -57,6 +65,7 @@ class EmployeeList extends Component {
                 <Button onClick={() => this.props.history.push("/addEmployee")}>
                     Add Employee
                 </Button>
+                <p>{this.state.errorMsg}</p>
                 <Table dataSource={this.state.employees}>
                     <Column title="ID" dataIndex="id" key="id" />
                     <Column
